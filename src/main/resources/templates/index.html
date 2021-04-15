@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Spring One</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <h1>Ведомость</h1>
+    <form class="d-flex" method="POST" th:action="@{/students/find}">
+        <input type="text" class="form-control me-2" placeholder="Поиск по ID" aria-label="Поиск по ID"
+               aria-describedby="button-addon2" name="id">
+        <button class="btn btn-outline-primary" type="submit" id="button-addon2">Поиск</button>
+    </form>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Балл</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s : ${students}">
+            <td th:text="${s.id}"/>
+            <td th:text="${s.name}"/>
+            <td>
+                <a class="btn btn-outline-primary" th:href="@{'/students/decrement/'+${s.id}}">-</a>
+                <span th:text="${s.score}"/>
+                <a class="btn btn-outline-primary" th:href="@{'/students/increment/'+${s.id}}">+</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" th:href="@{'/students/delete/' + ${s.id}}">Удалить запись</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/students/create}" class="btn btn-primary">Добавить нового студента</a>
+</div>
+</body>
+</html>

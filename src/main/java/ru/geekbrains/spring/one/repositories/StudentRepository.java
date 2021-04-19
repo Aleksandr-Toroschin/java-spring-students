@@ -1,6 +1,8 @@
 package ru.geekbrains.spring.one.repositories;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.geekbrains.spring.one.DAO.StudentDAO;
 import ru.geekbrains.spring.one.model.Student;
 
 import javax.annotation.PostConstruct;
@@ -12,15 +14,16 @@ import java.util.Optional;
 @Component
 public class StudentRepository {
     private List<Student> students;
+    private StudentDAO studentDAO;
+
+    @Autowired
+    public StudentRepository(StudentDAO studentDAO) {
+        this.studentDAO = studentDAO;
+    }
 
     @PostConstruct
     public void init() {
-        students = new ArrayList<>(Arrays.asList(
-                new Student(1L, "John", 80),
-                new Student(2L, "Jack", 90),
-                new Student(3L, "Bob", 100),
-                new Student(4L, "Max", 90)
-        ));
+        // получить factory
     }
 
     public List<Student> findAll() {

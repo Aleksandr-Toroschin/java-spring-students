@@ -1,5 +1,6 @@
 package ru.geekbrains.spring.one.controllers;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Controller
 public class StudentController {
     private StudentService studentService;
+    private SessionFactory factory;
 
     @Autowired
     public StudentController(StudentService studentService) {

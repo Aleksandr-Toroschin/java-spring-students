@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
@@ -48,4 +49,36 @@ public class StudentDAO {
             return student;
         }
     }
+
+    public List<Student> findAll() {
+        try (Session session = factory.getCurrentSession()) {
+            factory.getCurrentSession();
+            session.beginTransaction();
+
+            List<Student> students = session.createQuery("from Student").getResultList();
+
+            session.getTransaction().commit();
+            return students;
+        }
+    }
+
+    public void save(Student student) {
+        try (Session session = factory.getCurrentSession()) {
+            factory.getCurrentSession();
+            session.beginTransaction();
+            session.saveOrUpdate(student);
+            session.getTransaction().commit();
+        }
+    }
+
+    public void delete(Long id) {
+        try (Session session = factory.getCurrentSession()) {
+            factory.getCurrentSession();
+            session.beginTransaction();
+            Student student = session.get(Student.class, id);
+            session.delete(student);
+            session.getTransaction().commit();
+        }
+    }
+
 }

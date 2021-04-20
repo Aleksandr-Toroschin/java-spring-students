@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("ru.geekbrains.spring.one")
+//@ComponentScan("ru.geekbrains.spring.one")
 public class AppConfig {
     @Bean
     public SessionFactory factory() {

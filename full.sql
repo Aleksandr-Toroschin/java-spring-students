@@ -7,6 +7,6 @@ INSERT INTO students (name, score) VALUES
 ('Max', 20),
 ('Tom', 100),
 ('Bill', 50),
-('Will', 250);
+('Will', 99);
 
 COMMIT;

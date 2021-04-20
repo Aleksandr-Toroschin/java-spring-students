@@ -14,10 +14,10 @@
         <h1>Добавить нового студента</h1>
 
         <form method="POST" th:action="@{/students/create}">
-            <div class="mb-3">
-                <label for="idField" class="form-label">ID</label>
-                <input type="number" class="form-control" id="idField" name="id">
-            </div>
+<!--            <div class="mb-3">-->
+<!--                <label for="idField" class="form-label">ID</label>-->
+<!--                <input type="number" class="form-control" id="idField" name="id">-->
+<!--            </div>-->
             <div class="mb-3">
                 <label for="nameField" class="form-label">Имя студента</label>
                 <input type="text" class="form-control" id="nameField" name="name">
@@ -25,10 +25,6 @@
             <div class="mb-3">
                 <label for="scoreField" class="form-label">Балл</label>
                 <input type="number" class="form-control" id="scoreField" name="score">
-            </div>
-            <div class="mb-3">
-                <label for="scoreField" class="form-label">Что-нибудь</label>
-                <input type="number" class="form-control" id="somethingField" name="something">
             </div>
             <button type="submit" class="btn btn-primary">Подтвердить</button>
         </form>

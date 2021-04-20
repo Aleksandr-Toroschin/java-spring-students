@@ -22,4 +22,16 @@ public class Student {
 
     @Column(name="score")
     private int score;
+
+    public void incrementScore() {
+        if (score<100) {
+            score++;
+        }
+    }
+
+    public void decrementScore() {
+        if (score>0) {
+            score--;
+        }
+    }
 }

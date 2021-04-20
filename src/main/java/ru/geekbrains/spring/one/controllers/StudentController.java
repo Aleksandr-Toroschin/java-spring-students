@@ -57,7 +57,7 @@ public class StudentController {
     }
 
     @PostMapping("/students/find")
-    public String findByID(@RequestParam(required = false) Long id, Model model) {
+    public String findByID(@RequestParam Long id, Model model) {
         Optional<Student> student = studentService.findOneById(id);
         if (student.isPresent()) {
             model.addAttribute("student", student.get());
@@ -69,9 +69,7 @@ public class StudentController {
     public String incrementScore(@PathVariable(name = "id") Long id, Model model) {
         Optional<Student> student = studentService.findOneById(id);
         if (student.isPresent()) {
-            int score = student.get().getScore();
-            score = score<100 ? score+1 : score;
-            student.get().setScore(score);
+            studentService.incrementScore(student.get());
             model.addAttribute("student", student.get());
         }
         return "redirect:/";
@@ -81,9 +79,7 @@ public class StudentController {
     public String decrementScore(@PathVariable(name = "id") Long id, Model model) {
         Optional<Student> student = studentService.findOneById(id);
         if (student.isPresent()) {
-            int score = student.get().getScore();
-            score = score>0 ? score-1 : score;
-            student.get().setScore(score);
+            studentService.decrementScore(student.get());
             model.addAttribute("student", student.get());
         }
         return "redirect:/";
